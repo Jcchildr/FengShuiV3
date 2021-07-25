@@ -1,0 +1,50 @@
+﻿@model FengShui.Models.AmbienceDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Ambience Detailed View</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AmbienceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmbienceId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmbienceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmbienceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmbienceDesription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmbienceDesription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductCount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.AmbienceId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
