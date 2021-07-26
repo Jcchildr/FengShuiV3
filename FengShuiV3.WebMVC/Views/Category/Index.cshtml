@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FengShui.Models.ProductCategoryList>
+﻿@model IEnumerable<FengShui.Models.CategoryList>
 
 @{
     ViewBag.Title = "Index";
@@ -23,10 +23,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProductCategoryId)
+            @Html.DisplayNameFor(model => model.CategoryId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProductCategoryName)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </th>
         <th></th>
     </tr>
@@ -35,15 +35,15 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductCategoryId)
+                @Html.DisplayFor(modelItem => item.CategoryId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductCategoryName)
+                @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ProductCategoryId}) |
-                @Html.ActionLink("Details", "Details", new { id = item.ProductCategoryId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProductCategoryId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
             </td>
         </tr>
     }

@@ -9,15 +9,14 @@ using System.Web.Mvc;
 
 namespace FengShuiV3.WebMVC.Controllers
 {
-    public class ProductCategoryController : Controller
+    [Authorize]
+    public class CategoryController : Controller
     {
-        // GET: ProductCategory
+        // GET: Category
         public ActionResult Index()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new ProductCategoryService(userId);
-            var model = service.GetAllProductCategories();
-            return View(model);
+            CategoryService categoryService = CreateCategoryService();
+            return View(categoryService.GetCategories());
         }
 
         //Get
@@ -29,13 +28,13 @@ namespace FengShuiV3.WebMVC.Controllers
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ProductCategoryCreate model)
+        public ActionResult Create(CategoryCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            var service = CreateProductCategoryService();
+            var service = CreateCategoryService();
 
-            if (service.CreateProductCategory(model))
+            if (service.CreateCategory(model))
             {
                 TempData["SaveResult"] = "The category was created.";
                 return RedirectToAction("Index");
@@ -47,40 +46,40 @@ namespace FengShuiV3.WebMVC.Controllers
 
         public ActionResult Details(int id)
         {
-            var svc = CreateProductCategoryService();
-            var model = svc.GetProductCategoryById(id);
+            var svc = CreateCategoryService();
+            var model = svc.GetCategoryById(id);
 
             return View(model);
         }
 
         public ActionResult Edit(int id)
         {
-            var service = CreateProductCategoryService();
-            var detail = service.GetProductCategoryById(id);
+            var service = CreateCategoryService();
+            var detail = service.GetCategoryById(id);
             var model =
-                new ProductCategoryEdit
+                new CategoryEdit
                 {
-                    ProductCategoryId = detail.ProductCategoryId,
-                    ProductCategoryName = detail.ProductCategoryName,
-                    ProductCategoryDesc = detail.ProductCategoryDesc
+                    CategoryId = detail.CategoryId,
+                    CategoryName = detail.CategoryName,
+                    CategoryDesc = detail.CategoryDesc
                 };
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, ProductCategoryEdit model)
+        public ActionResult Edit(int id, CategoryEdit model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.ProductCategoryId != id)
+            if (model.CategoryId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
-            var service = CreateProductCategoryService();
+            var service = CreateCategoryService();
 
-            if (service.UpdateProductCategory(model))
+            if (service.UpdateCategory(model))
             {
                 TempData["SaveResult"] = "The category was updated.";
                 return RedirectToAction("Index");
@@ -93,8 +92,8 @@ namespace FengShuiV3.WebMVC.Controllers
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            var svc = CreateProductCategoryService();
-            var model = svc.GetProductCategoryById(id);
+            var svc = CreateCategoryService();
+            var model = svc.GetCategoryById(id);
 
             return View(model);
         }
@@ -104,9 +103,9 @@ namespace FengShuiV3.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletePost(int id)
         {
-            var service = CreateProductCategoryService();
+            var service = CreateCategoryService();
 
-            service.DeleteProductCategory(id);
+            service.DeleteCategory(id);
 
             TempData["SaveResult"] = "The category was deleted.";
 
@@ -114,10 +113,10 @@ namespace FengShuiV3.WebMVC.Controllers
         }
 
 
-        private ProductCategoryService CreateProductCategoryService()
+        private CategoryService CreateCategoryService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new ProductCategoryService(userId);
+            var service = new CategoryService(userId);
             return service;
         }
 

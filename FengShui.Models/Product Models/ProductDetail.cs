@@ -28,13 +28,13 @@ namespace FengShui.Models
         [Display(Name = "Discription")]
         public string ProductDescription { get; set; }
         [Display(Name = "Category")]
-        public string ProductCategoryName { get; set; }
-        public int ProductCategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public int CategoryId { get; set; }
         [Display(Name = "Home Location")]
         public HomeLocationEnum HomeLocation { get; set; }
         [Display(Name = "Primary Color")]
         public ColorEnum PrimaryColor { get; set; }
-        [Display(Name = "Primary Color")]
+        [Display(Name = "Secondary Color")]
         public ColorEnum ?SecondaryColor { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }

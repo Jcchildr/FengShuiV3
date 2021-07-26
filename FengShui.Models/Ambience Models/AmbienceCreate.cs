@@ -10,9 +10,11 @@ namespace FengShui.Models
     public class AmbienceCreate
     {
         [Required]
+        [Display(Name = "Ambience Name")]
         public string AmbienceName { get; set; }
         [Required]
-        [MaxLength(100, ErrorMessage = "Too many characters in this field.")]
+        [Display(Name = "Ambience Description")]
+        [MaxLength(200, ErrorMessage = "Too many characters in this field.")]
         public string AmbienceDesription { get; set; }
     }
 }

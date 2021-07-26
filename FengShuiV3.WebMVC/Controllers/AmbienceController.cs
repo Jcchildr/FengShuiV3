@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace FengShuiV3.WebMVC.Controllers
 {
+    [Authorize]
     public class AmbienceController : Controller
     {
         // GET: Ambience

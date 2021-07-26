@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace FengShui.Data
 {
-    public class ProductCategory
+    public class Category
     {
         [Key]
-        public int ProductCategoryId { get; set; }
+        public int CategoryId { get; set; }
         [Required]
         public Guid AdminId { get; set; }
         [Required]
-        public string ProductCategoryName { get; set; }
+        public string CategoryName { get; set; }
         [Required]
-        public string ProductCategoryDesc { get; set; }
+        public string CategoryDesc { get; set; }
     }
 }

@@ -12,114 +12,114 @@ namespace FengShui.Services
     {
         private readonly Guid _userId;
 
-    public AmbienceService(Guid userId)
-    {
-        _userId = userId;
-    }
-
-    public bool CreateAmbience(AmbienceCreate model)
-    {
-        var entity =
-            new Ambience()
-            {
-                AdminId = _userId,
-                AmbienceName = model.AmbienceName,
-                AmbienceDesription = model.AmbienceDesription,
-            };
-
-        using (var ctx = new ApplicationDbContext())
+        public AmbienceService(Guid userId)
         {
-            ctx.Ambiences.Add(entity);
-            return ctx.SaveChanges() == 1;
+            _userId = userId;
         }
-    }
 
-    public IEnumerable<AmbienceList> GetAmbiences()
-    {
-        using (var ctx = new ApplicationDbContext())
-        {
-            var query =
-                ctx
-                    .Ambiences
-                    .Where(e => e.AdminId == _userId)
-                    .Select(
-                    e =>
-                        new AmbienceList
-                        {
-                            AmbienceId = e.AmbienceId,
-                            AmbienceName = e.AmbienceName
-                        }
-                    );
-            return query.ToArray();
-        }
-    }
-
-    public AmbienceDetail GetAmbienceById(int id)
-    {
-        using (var ctx = new ApplicationDbContext())
+        public bool CreateAmbience(AmbienceCreate model)
         {
             var entity =
-                ctx
-                .Ambiences
-                .Single(e => e.AmbienceId == id && e.AdminId == _userId);
-            return
-                new AmbienceDetail
+                new Ambience()
                 {
-                    AmbienceId = entity.AmbienceId,
-                    AmbienceName = entity.AmbienceName,
-                    AmbienceDesription = entity.AmbienceDesription,
-                    ProductCount = entity.ListOfProducts.Count,
+                    AdminId = _userId,
+                    AmbienceName = model.AmbienceName,
+                    AmbienceDesription = model.AmbienceDesription,
                 };
-        }
-    }
 
-    public bool UpdateAmbience(AmbienceEdit model)
-    {
-        using (var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Ambiences.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public IEnumerable<AmbienceList> GetAmbiences()
         {
-            var entity =
-                ctx
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Ambiences
+                        .Where(e => e.AdminId == _userId)
+                        .Select(
+                        e =>
+                            new AmbienceList
+                            {
+                                AmbienceId = e.AmbienceId,
+                                AmbienceName = e.AmbienceName
+                            }
+                        );
+                return query.ToArray();
+            }
+        }
+
+        public AmbienceDetail GetAmbienceById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
                     .Ambiences
-                    .Single(e => e.AmbienceId == model.AmbienceId && e.AdminId == _userId);
-            entity.AmbienceName = model.AmbienceName;
-            entity.AmbienceDesription = model.AmbienceDesription;
-
-            return ctx.SaveChanges() == 1;
+                    .Single(e => e.AmbienceId == id && e.AdminId == _userId);
+                return
+                    new AmbienceDetail
+                    {
+                        AmbienceId = entity.AmbienceId,
+                        AmbienceName = entity.AmbienceName,
+                        AmbienceDesription = entity.AmbienceDesription,
+                        ProductCount = entity.ListOfProducts.Count,
+                    };
+            }
         }
-    }
 
-    public bool DeleteAmbience(int ambienceId)
-    {
-        using (var ctx = new ApplicationDbContext())
+        public bool UpdateAmbience(AmbienceEdit model)
         {
-            var entity =
-                ctx
-                .Ambiences
-                .Single(e => e.AmbienceId == ambienceId && e.AdminId == _userId);
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Ambiences
+                        .Single(e => e.AmbienceId == model.AmbienceId && e.AdminId == _userId);
+                entity.AmbienceName = model.AmbienceName;
+                entity.AmbienceDesription = model.AmbienceDesription;
 
-            ctx.Ambiences.Remove(entity);
-            return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 1;
+            }
         }
-    }
 
-    public IEnumerable<ProductAmbienceDetail> GetAllProductsByAmbienceId(int ambienceId)
-    {
-        using (var ctx = new ApplicationDbContext())
+        public bool DeleteAmbience(int ambienceId)
         {
-            var foundItems =
-           ctx.Ambiences.Single(e => e.AmbienceId == ambienceId).ListOfProducts
-           .Select(e => new ProductAmbienceDetail
-           {
-               ProductId = e.ProductId,
-               ProductName = e.ProductName,
-               Price = e.Price,
-               Brandname = e.Brandname
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Ambiences
+                    .Single(e => e.AmbienceId == ambienceId && e.AdminId == _userId);
 
-           }
-           );
-            return foundItems.ToArray();
+                ctx.Ambiences.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
         }
 
+        public IEnumerable<ProductAmbienceDetail> GetAllProductsByAmbienceId(int ambienceId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundItems =
+               ctx.Ambiences.Single(e => e.AmbienceId == ambienceId).ListOfProducts
+               .Select(e => new ProductAmbienceDetail
+               {
+                   ProductId = e.ProductId,
+                   ProductName = e.ProductName,
+                   Price = e.Price,
+                   Brandname = e.Brandname
+
+               }
+               );
+                return foundItems.ToArray();
+            }
+
+        }
     }
-}
 }

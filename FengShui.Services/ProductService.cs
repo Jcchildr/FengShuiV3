@@ -31,7 +31,7 @@ namespace FengShui.Services
                     Width = model.Width,
                     NumberInStock = model.NumberInStock,
                     ProductDescription = model.ProductDescription,
-                    ProductCategoryId = model.ProductCategoryId,
+                    CategoryId = model.CategoryId,
                     HomeLocation = model.HomeLocation,
                     PrimaryColor = model.PrimaryColor,
                     SecondaryColor = model.SecondaryColor,
@@ -86,7 +86,38 @@ namespace FengShui.Services
                         Dimension = entity.Dimension,
                         NumberInStock = entity.NumberInStock,
                         ProductDescription = entity.ProductDescription,
-                        ProductCategoryName = entity.ProductCategory.ProductCategoryName,
+                        CategoryName = entity.Category.CategoryName,
+                        HomeLocation = entity.HomeLocation,
+                        PrimaryColor = entity.PrimaryColor,
+                        SecondaryColor = entity.SecondaryColor,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
+            }
+        }
+
+        //Made so the progam will remember the Height,Length and Width when editing
+        public ProductDetail EditProductById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Products
+                    .Single(e => e.ProductId == id && e.AdminId == _userId);
+                return
+                    new ProductDetail
+                    {
+                        ProductId = entity.ProductId,
+                        ProductName = entity.ProductName,
+                        Price = entity.Price,
+                        Brandname = entity.Brandname,
+                        Height = entity.Height,
+                        Length = entity.Length,
+                        Width = entity.Width,
+                        NumberInStock = entity.NumberInStock,
+                        ProductDescription = entity.ProductDescription,
+                        CategoryName = entity.Category.CategoryName,
                         HomeLocation = entity.HomeLocation,
                         PrimaryColor = entity.PrimaryColor,
                         SecondaryColor = entity.SecondaryColor,
@@ -112,10 +143,10 @@ namespace FengShui.Services
                 entity.Length = model.Length;
                 entity.NumberInStock = model.NumberInStock;
                 entity.ProductDescription = model.ProductDescription;
-                entity.ProductCategoryId = model.ProductCategoryId;
+                entity.CategoryId = model.CategoryId;
                 entity.HomeLocation = model.HomeLocation;
                 entity.PrimaryColor = model.PrimaryColor;
-                entity.SecondaryColor = model.SecondayColor;
+                entity.SecondaryColor = model.SecondaryColor;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
@@ -135,5 +166,59 @@ namespace FengShui.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public void AddAmbienceToProduct(int ambienceId, int productId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var foundAmbience = ctx.Ambiences.Single(a => a.AmbienceId == ambienceId);
+                var foundProduct = ctx.Products.Single(p => p.ProductId == productId);
+                foundProduct.ListOfAmbiences.Add(foundAmbience);
+                var testing = ctx.SaveChanges();
+
+            }
+        }
+
+        public List<Product> Products()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Products.ToList();
+            }
+        }
+
+        //public ProductAmbienceCreate
+
+        /* public string GetHomeLocationData()
+         {
+             using (var ctx = new ApplicationDbContext())
+             {
+                 var productList =
+                     ctx
+                     .Products
+                     .Where(e => e.AdminId == _userId);
+                 List<int> homeLocationValues = new List<int>();
+                 foreach (HomeLocationEnum homeLocation in (HomeLocationEnum[])Enum.GetValues(typeof(HomeLocationEnum)))
+                 {
+                     int homeLocationCount = 0;
+                     foreach (var p in productList)
+                     {
+                         if (p.HomeLocation == homeLocation)
+                             homeLocationCount++;
+                     }
+                     homeLocationValues.Add(homeLocationCount);
+                 }
+
+                 string result = "";
+
+                 foreach (var h in homeLocationValues)
+                 {
+                     result += h;
+                     result += ",";
+                 }
+                 return result;
+             }*/
+
+
     }
 }

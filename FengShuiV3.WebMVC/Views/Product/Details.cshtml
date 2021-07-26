@@ -1,0 +1,122 @@
+﻿@model FengShui.Models.ProductDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brandname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brandname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dimension)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dimension)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberInStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberInStock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimaryColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimaryColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondaryColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondaryColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedUtc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

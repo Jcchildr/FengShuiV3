@@ -53,9 +53,9 @@ namespace FengShui.Data
         }
 
         //One to many relationship with ItemCategory
-        [ForeignKey("ProductCategory")]
-        public int ProductCategoryId { get; set; }
-        public virtual ProductCategory ProductCategory { get; set; }
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
 
         //Allows the user to select a HomeLocation from a list 
         public HomeLocationEnum HomeLocation { get; set; }
@@ -94,5 +94,16 @@ namespace FengShui.Data
         Green,
         Purple,
         Orange,
+        Mixed,
+        Teal,
+        Grey,
+        White,
+        Black,
+        [Display(Name = "Ligth Wood Accent")]
+        LightWoodAccent,
+        [Display(Name = "Dark Wood Accent")]
+        DarkWoodAccent,
+        [Display(Name = "Not Applicable")]
+        NA
     }
 }

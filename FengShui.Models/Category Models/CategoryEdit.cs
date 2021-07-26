@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace FengShui.Models
 {
-    public class ProductCategoryList
+    public class CategoryEdit
     {
         [Display(Name = "Category ID")]
-        public int ProductCategoryId { get; set; }
+        public int CategoryId { get; set; }
         [Display(Name = "Category Title")]
-        public string ProductCategoryName { get; set; }
+        public string CategoryName { get; set; }
+        [Display(Name = "Category Description")]
+        public string CategoryDesc { get; set; }
     }
 }

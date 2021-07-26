@@ -34,7 +34,7 @@ namespace FengShui.Data
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Ambience> Ambiences { get; set; }
-        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -188,7 +188,7 @@
     <Compile Include="Controllers\AmbienceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ProductCategoryController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -259,13 +259,17 @@
     <Content Include="Views\Ambience\Details.cshtml" />
     <Content Include="Views\Ambience\Edit.cshtml" />
     <Content Include="Views\Ambience\Delete.cshtml" />
-    <Content Include="Views\ProductCategory\Index.cshtml" />
-    <Content Include="Views\ProductCategory\Create.cshtml" />
-    <Content Include="Views\ProductCategory\Details.cshtml" />
-    <Content Include="Views\ProductCategory\Edit.cshtml" />
-    <Content Include="Views\ProductCategory\Delete.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\AddAmbienceToProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

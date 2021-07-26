@@ -56,17 +56,18 @@
   <ItemGroup>
     <Compile Include="Ambience Models\AmbienceCreate.cs" />
     <Compile Include="Ambience Models\AmbienceEdit.cs" />
-    <Compile Include="Product Category Models\ProductCategoryCreate.cs" />
-    <Compile Include="Product Category Models\ProductCategoryList.cs" />
+    <Compile Include="Category Models\CategoryCreate.cs" />
+    <Compile Include="Category Models\CategoryList.cs" />
     <Compile Include="Product Models\ProductDetail.cs" />
     <Compile Include="Ambience Models\AmbienceDetail.cs" />
     <Compile Include="Ambience Models\AmbienceList.cs" />
-    <Compile Include="Product Category Models\ProductCategoryDetail.cs" />
-    <Compile Include="Product Category Models\ProductCategoryEdit.cs" />
+    <Compile Include="Category Models\CategoryDetail.cs" />
+    <Compile Include="Category Models\CategoryEdit.cs" />
     <Compile Include="Product Models\ProductList.cs" />
     <Compile Include="Product Models\ProductEdit.cs" />
     <Compile Include="Product Models\ProductCreate.cs" />
     <Compile Include="ProductAmbienceDetail.cs" />
+    <Compile Include="ProductAmbienceCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

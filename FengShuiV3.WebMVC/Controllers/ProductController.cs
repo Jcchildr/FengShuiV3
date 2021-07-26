@@ -1,4 +1,5 @@
-﻿using FengShui.Models;
+﻿using FengShui.Data;
+using FengShui.Models;
 using FengShui.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -16,8 +17,7 @@ namespace FengShuiV3.WebMVC.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new ProductService(userId);
+            var service = CreateProductService();
             var model = service.GetProducts();
             return View(model);
         }
@@ -25,6 +25,17 @@ namespace FengShuiV3.WebMVC.Controllers
         //Get
         public ActionResult Create()
         {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            ViewBag.CategoryList = new CategoryService(userId).GetCategories();
+            return View();
+        }
+
+        
+
+        public ActionResult AddAmbiencetoProduct()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            ViewBag.AmbienceList = new AmbienceService(userId).GetAmbiences();
             return View();
         }
 
@@ -51,14 +62,13 @@ namespace FengShuiV3.WebMVC.Controllers
         {
             var svc = CreateProductService();
             var model = svc.GetProductById(id);
-
             return View(model);
         }
 
         public ActionResult Edit(int id)
         {
             var service = CreateProductService();
-            var detail = service.GetProductById(id);
+            var detail = service.EditProductById(id);
             var model =
                 new ProductEdit
                 {
@@ -71,12 +81,15 @@ namespace FengShuiV3.WebMVC.Controllers
                     Length = detail.Length,
                     NumberInStock = detail.NumberInStock,
                     ProductDescription = detail.ProductDescription,
-                    ProductCategoryId = detail.ProductCategoryId,
+                    CategoryId = detail.CategoryId,
                     HomeLocation = detail.HomeLocation,
                     PrimaryColor = detail.PrimaryColor,
-                    SecondayColor = detail.SecondaryColor,
+                    SecondaryColor = detail.SecondaryColor,
                 };
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            ViewBag.CategoryList = new CategoryService(userId).GetCategories();
             return View(model);
+
         }
 
         [HttpPost]
