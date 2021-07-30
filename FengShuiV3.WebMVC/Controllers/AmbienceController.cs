@@ -15,8 +15,7 @@ namespace FengShuiV3.WebMVC.Controllers
         // GET: Ambience
         public ActionResult Index()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new AmbienceService(userId);
+            var service = CreateAmbienceService();
             var model = service.GetAmbiences();
             return View(model);
         }
@@ -46,7 +45,7 @@ namespace FengShuiV3.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult GetAlGetAllProductsByAmbienceId(int id)
         {
             var svc = CreateAmbienceService();
             var model = svc.GetAmbienceById(id);
@@ -114,6 +113,8 @@ namespace FengShuiV3.WebMVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        
 
 
         private AmbienceService CreateAmbienceService()

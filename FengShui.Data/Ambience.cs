@@ -17,13 +17,5 @@ namespace FengShui.Data
         public string AmbienceName { get; set; }
         [Required]
         public string AmbienceDesription { get; set; }
-        //Allows one to view all the Product of an Adjective (Many to many)
-        public virtual ICollection<Product> ListOfProducts { get; set; }
-
-        public Ambience()
-        {
-            ListOfProducts = new HashSet<Product>();
-        }
-
     }
 }

@@ -68,7 +68,7 @@ namespace FengShui.Services
                         AmbienceId = entity.AmbienceId,
                         AmbienceName = entity.AmbienceName,
                         AmbienceDesription = entity.AmbienceDesription,
-                        ProductCount = entity.ListOfProducts.Count,
+                        
                     };
             }
         }
@@ -102,12 +102,12 @@ namespace FengShui.Services
             }
         }
 
-        public IEnumerable<ProductAmbienceDetail> GetAllProductsByAmbienceId(int ambienceId)
+       /* public IEnumerable<ProductAmbienceDetail> GetAllProductsByAmbienceId(int ambienceId)
         {
-            using (var ctx = new ApplicationDbContext())
+            using(var ctx = new ApplicationDbContext)
             {
                 var foundItems =
-               ctx.Ambiences.Single(e => e.AmbienceId == ambienceId).ListOfProducts
+               ctx.ProductAmbiences.Single(e => e.AmbienceId == ambienceId).ProductId
                .Select(e => new ProductAmbienceDetail
                {
                    ProductId = e.ProductId,
@@ -120,6 +120,6 @@ namespace FengShui.Services
                 return foundItems.ToArray();
             }
 
-        }
+        } */
     }
 }

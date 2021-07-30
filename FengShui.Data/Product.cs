@@ -44,14 +44,6 @@ namespace FengShui.Data
         public DateTimeOffset? ModifiedUtc { get; set; }
 
 
-        //Allows one to view all the Adjectives of a product (Many to many)
-        public virtual ICollection<Ambience> ListOfAmbiences { get; set; }
-
-        public Product()
-        {
-            ListOfAmbiences = new HashSet<Ambience>();
-        }
-
         //One to many relationship with ItemCategory
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
@@ -101,7 +93,7 @@ namespace FengShui.Data
         Black,
         [Display(Name = "Ligth Wood Accent")]
         LightWoodAccent,
-        [Display(Name = "Dark Wood Accent")]
+        [Display(Name = " Wood Accent")]
         DarkWoodAccent,
         [Display(Name = "Not Applicable")]
         NA

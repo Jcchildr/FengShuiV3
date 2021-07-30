@@ -66,8 +66,10 @@
     <Compile Include="Product Models\ProductList.cs" />
     <Compile Include="Product Models\ProductEdit.cs" />
     <Compile Include="Product Models\ProductCreate.cs" />
-    <Compile Include="ProductAmbienceDetail.cs" />
-    <Compile Include="ProductAmbienceCreate.cs" />
+    <Compile Include="Produict_Ambience Models\ProductAmbienceDetail.cs" />
+    <Compile Include="Produict_Ambience Models\ProductAmbienceCreate.cs" />
+    <Compile Include="Produict_Ambience Models\ProductAmbienceEdit.cs" />
+    <Compile Include="Produict_Ambience Models\ProductAmbienceList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

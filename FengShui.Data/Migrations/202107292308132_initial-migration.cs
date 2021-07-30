@@ -3,7 +3,7 @@ namespace FengShui.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class initialmigration : DbMigration
     {
         public override void Up()
         {
@@ -17,6 +17,30 @@ namespace FengShui.Data.Migrations
                         AmbienceDesription = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.AmbienceId);
+            
+            CreateTable(
+                "dbo.Category",
+                c => new
+                    {
+                        CategoryId = c.Int(nullable: false, identity: true),
+                        AdminId = c.Guid(nullable: false),
+                        CategoryName = c.String(nullable: false),
+                        CategoryDesc = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.CategoryId);
+            
+            CreateTable(
+                "dbo.ProductAmbience",
+                c => new
+                    {
+                        ProductId = c.Int(nullable: false),
+                        AmbienceId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.ProductId, t.AmbienceId })
+                .ForeignKey("dbo.Ambience", t => t.AmbienceId, cascadeDelete: true)
+                .ForeignKey("dbo.Product", t => t.ProductId, cascadeDelete: true)
+                .Index(t => t.ProductId)
+                .Index(t => t.AmbienceId);
             
             CreateTable(
                 "dbo.Product",
@@ -42,17 +66,6 @@ namespace FengShui.Data.Migrations
                 .PrimaryKey(t => t.ProductId)
                 .ForeignKey("dbo.Category", t => t.CategoryId, cascadeDelete: true)
                 .Index(t => t.CategoryId);
-            
-            CreateTable(
-                "dbo.Category",
-                c => new
-                    {
-                        CategoryId = c.Int(nullable: false, identity: true),
-                        AdminId = c.Guid(nullable: false),
-                        CategoryName = c.String(nullable: false),
-                        CategoryDesc = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.CategoryId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -124,19 +137,6 @@ namespace FengShui.Data.Migrations
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.ApplicationUser_Id);
             
-            CreateTable(
-                "dbo.ProductAmbience",
-                c => new
-                    {
-                        Product_ProductId = c.Int(nullable: false),
-                        Ambience_AmbienceId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Product_ProductId, t.Ambience_AmbienceId })
-                .ForeignKey("dbo.Product", t => t.Product_ProductId, cascadeDelete: true)
-                .ForeignKey("dbo.Ambience", t => t.Ambience_AmbienceId, cascadeDelete: true)
-                .Index(t => t.Product_ProductId)
-                .Index(t => t.Ambience_AmbienceId);
-            
         }
         
         public override void Down()
@@ -145,24 +145,24 @@ namespace FengShui.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
-            DropForeignKey("dbo.ProductAmbience", "Ambience_AmbienceId", "dbo.Ambience");
-            DropForeignKey("dbo.ProductAmbience", "Product_ProductId", "dbo.Product");
+            DropForeignKey("dbo.ProductAmbience", "ProductId", "dbo.Product");
             DropForeignKey("dbo.Product", "CategoryId", "dbo.Category");
-            DropIndex("dbo.ProductAmbience", new[] { "Ambience_AmbienceId" });
-            DropIndex("dbo.ProductAmbience", new[] { "Product_ProductId" });
+            DropForeignKey("dbo.ProductAmbience", "AmbienceId", "dbo.Ambience");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
             DropIndex("dbo.Product", new[] { "CategoryId" });
-            DropTable("dbo.ProductAmbience");
+            DropIndex("dbo.ProductAmbience", new[] { "AmbienceId" });
+            DropIndex("dbo.ProductAmbience", new[] { "ProductId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
-            DropTable("dbo.Category");
             DropTable("dbo.Product");
+            DropTable("dbo.ProductAmbience");
+            DropTable("dbo.Category");
             DropTable("dbo.Ambience");
         }
     }

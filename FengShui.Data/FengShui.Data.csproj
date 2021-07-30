@@ -56,13 +56,14 @@
   <ItemGroup>
     <Compile Include="Ambience.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202107251900042_Initial-Migration.cs" />
-    <Compile Include="Migrations\202107251900042_Initial-Migration.Designer.cs">
-      <DependentUpon>202107251900042_Initial-Migration.cs</DependentUpon>
+    <Compile Include="Migrations\202107292308132_initial-migration.cs" />
+    <Compile Include="Migrations\202107292308132_initial-migration.Designer.cs">
+      <DependentUpon>202107292308132_initial-migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="ProductAmbience.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,8 +71,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107251900042_Initial-Migration.resx">
-      <DependentUpon>202107251900042_Initial-Migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107292308132_initial-migration.resx">
+      <DependentUpon>202107292308132_initial-migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

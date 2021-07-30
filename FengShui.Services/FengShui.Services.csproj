@@ -57,6 +57,7 @@
     <Compile Include="AmbienceService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="CategoryService.cs" />
+    <Compile Include="ProductAmbienceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
