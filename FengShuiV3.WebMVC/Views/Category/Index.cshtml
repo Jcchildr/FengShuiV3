@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Category Index</h2>
+<h2 class= "text-center">Category Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,6 +20,8 @@
         @TempData["SaveResult"]
     </div>
 }
+
+
 <table class="table">
     <tr>
         <th>
@@ -41,9 +43,11 @@
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
+                <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = item.CategoryId })</button>
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Details", "Details", new { id = item.CategoryId })</button>
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })</button>
+                </div>
             </td>
         </tr>
     }

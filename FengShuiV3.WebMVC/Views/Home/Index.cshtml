@@ -3,29 +3,59 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1 class="text-center">Feng Shui</h1>
+    <p class="lead text-center">Bring a new balance and atmosphere to your home.</p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<div id="carousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+     <ol class="carousel-indicators">
+         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+         <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+     </ol>
+
+  <!-- Wrapper for slides -->
+     <div class="carousel-inner" role="listbox">
+         <div class="item active">
+             <img src="https://eleven-fifty-redbadge-jc.imgix.net/Wabi-Sabi.jpg?fit=fill&fill=blur&w=1200&h=900" alt="..." />
+             <div class="carousel-caption">
+                 <h1>@Html.ActionLink("Wabi-Sabi", "PADetails/4", "ProductAmbience", null, new { style = "color:white" })</h1>
+                 <p>PlaceHolder</p>
+             </div>
+         </div>
+         <div class="item">
+             <img src="https://eleven-fifty-redbadge-jc.imgix.net/Moody.jpg?fit=fill&fill=blur&w=1200&h=900" alt="..." />
+             <div class="carousel-caption">
+                 <h1>@Html.ActionLink("Moody", "PADetails/2", "ProductAmbience", null, new { style = "color:white" })</h1>
+                 <p>PlaceHolder</p>
+             </div>
+         </div>
+         <div class="item">
+             <img src="https://eleven-fifty-redbadge-jc.imgix.net/Lively.jpg?fit=fill&fill=blur&w=1200&h=900" alt="..." />
+             <div class="carousel-caption">
+                 <h1>@Html.ActionLink("Lively", "PADetails/1", "ProductAmbience", null, new { style = "color:white" })</h1>
+                 <p>PlaceHolder</p>
+             </div>
+         </div>
+         <div class="item">
+             <img src="https://eleven-fifty-redbadge-jc.imgix.net/Log-Cabin-Vibes.jpg?fit=fill&fill=blur&w=1200&h=900" alt="...">
+             <div class="carousel-caption">
+                 <h1>@Html.ActionLink("Log Cabin Vibes", "PADetails/3", "ProductAmbience", null, new { style = "color:white" })</h1>
+                 <p>PlaceHolder</p>
+             </div>
+         </div>
+     </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
+

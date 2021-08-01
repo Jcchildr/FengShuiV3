@@ -22,7 +22,6 @@ namespace FengShui.Services
             var entity =
                 new Product()
                 {
-                    AdminId = _userId,
                     ProductName = model.ProductName,
                     Price = model.Price,
                     Brandname = model.Brandname,
@@ -53,7 +52,6 @@ namespace FengShui.Services
                 var query =
                     ctx
                         .Products
-                        .Where(p => p.AdminId == _userId)
                         .Select(
                         p =>
                             new ProductList
@@ -75,7 +73,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Products
-                    .Single(p => p.ProductId == id && p.AdminId == _userId);
+                    .Single(p => p.ProductId == id);
                 return
                     new ProductDetail
                     {
@@ -104,7 +102,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Products
-                    .Single(p => p.ProductId == id && p.AdminId == _userId);
+                    .Single(p => p.ProductId == id);
                 return
                     new ProductDetail
                     {
@@ -134,7 +132,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                         .Products
-                        .Single(p => p.ProductId == model.ProductId && p.AdminId == _userId);
+                        .Single(p => p.ProductId == model.ProductId);
                 entity.ProductName = model.ProductName;
                 entity.Price = model.Price;
                 entity.Brandname = model.Brandname;
@@ -160,7 +158,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Products
-                    .Single(p => p.ProductId == productId && p.AdminId == _userId);
+                    .Single(p => p.ProductId == productId);
 
                 ctx.Products.Remove(entity);
                 return ctx.SaveChanges() == 1;
@@ -174,39 +172,5 @@ namespace FengShui.Services
                 return ctx.Products.ToList();
             }
         }
-
-        //public ProductAmbienceCreate
-
-        /* public string GetHomeLocationData()
-         {
-             using (var ctx = new ApplicationDbContext())
-             {
-                 var productList =
-                     ctx
-                     .Products
-                     .Where(e => e.AdminId == _userId);
-                 List<int> homeLocationValues = new List<int>();
-                 foreach (HomeLocationEnum homeLocation in (HomeLocationEnum[])Enum.GetValues(typeof(HomeLocationEnum)))
-                 {
-                     int homeLocationCount = 0;
-                     foreach (var p in productList)
-                     {
-                         if (p.HomeLocation == homeLocation)
-                             homeLocationCount++;
-                     }
-                     homeLocationValues.Add(homeLocationCount);
-                 }
-
-                 string result = "";
-
-                 foreach (var h in homeLocationValues)
-                 {
-                     result += h;
-                     result += ",";
-                 }
-                 return result;
-             }*/
-
-
     }
 }

@@ -13,7 +13,7 @@ namespace FengShui.Data
         [Key]
         public int ProductId { get; set; }
         [Required]
-        public Guid AdminId { get; set; }
+        public Guid UserId { get; set; }
         [Required]
         public string ProductName { get; set; }
         [Required]
@@ -31,7 +31,7 @@ namespace FengShui.Data
         {
             get
             {
-                return Length + " X " + Width + " X " + Height;
+                return Length + "L X " + Width + "W X " + Height + "H";
             }
         }
         [Required]
@@ -39,7 +39,7 @@ namespace FengShui.Data
         [Required]
         public string ProductDescription { get; set; }
         [Required]
-        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? CreatedUtc { get; set; }
 
         public DateTimeOffset? ModifiedUtc { get; set; }
 
@@ -91,6 +91,10 @@ namespace FengShui.Data
         Grey,
         White,
         Black,
+        Leather,
+        Gold,
+        Silver,
+        Bronze,
         [Display(Name = "Ligth Wood Accent")]
         LightWoodAccent,
         [Display(Name = " Wood Accent")]

@@ -92,8 +92,8 @@ namespace FengShuiV3.WebMVC.Controllers
 
                     ModelState.AddModelError("", "Link could not be updated.");
                     return View();
-                }*/
-
+                }
+        */
         private ProductAmbienceService CreateProductAmbienceService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

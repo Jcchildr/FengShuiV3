@@ -3,7 +3,7 @@ namespace FengShui.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialmigration : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
@@ -12,7 +12,6 @@ namespace FengShui.Data.Migrations
                 c => new
                     {
                         AmbienceId = c.Int(nullable: false, identity: true),
-                        AdminId = c.Guid(nullable: false),
                         AmbienceName = c.String(nullable: false),
                         AmbienceDesription = c.String(nullable: false),
                     })
@@ -23,7 +22,6 @@ namespace FengShui.Data.Migrations
                 c => new
                     {
                         CategoryId = c.Int(nullable: false, identity: true),
-                        AdminId = c.Guid(nullable: false),
                         CategoryName = c.String(nullable: false),
                         CategoryDesc = c.String(nullable: false),
                     })
@@ -47,7 +45,6 @@ namespace FengShui.Data.Migrations
                 c => new
                     {
                         ProductId = c.Int(nullable: false, identity: true),
-                        AdminId = c.Guid(nullable: false),
                         ProductName = c.String(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Brandname = c.String(nullable: false),

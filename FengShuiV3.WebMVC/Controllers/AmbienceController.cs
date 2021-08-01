@@ -114,9 +114,6 @@ namespace FengShuiV3.WebMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        
-
-
         private AmbienceService CreateAmbienceService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

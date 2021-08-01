@@ -12,8 +12,6 @@ namespace FengShui.Data
         [Key]
         public int AmbienceId { get; set; }
         [Required]
-        public Guid AdminId { get; set; }
-        [Required]
         public string AmbienceName { get; set; }
         [Required]
         public string AmbienceDesription { get; set; }

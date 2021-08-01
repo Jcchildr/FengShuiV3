@@ -22,7 +22,6 @@ namespace FengShui.Services
             var entity =
                 new Ambience()
                 {
-                    AdminId = _userId,
                     AmbienceName = model.AmbienceName,
                     AmbienceDesription = model.AmbienceDesription,
                 };
@@ -41,7 +40,6 @@ namespace FengShui.Services
                 var query =
                     ctx
                         .Ambiences
-                        .Where(e => e.AdminId == _userId)
                         .Select(
                         e =>
                             new AmbienceList
@@ -61,7 +59,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Ambiences
-                    .Single(e => e.AmbienceId == id && e.AdminId == _userId);
+                    .Single(e => e.AmbienceId == id);
                 return
                     new AmbienceDetail
                     {
@@ -80,7 +78,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                         .Ambiences
-                        .Single(e => e.AmbienceId == model.AmbienceId && e.AdminId == _userId);
+                        .Single(e => e.AmbienceId == model.AmbienceId);
                 entity.AmbienceName = model.AmbienceName;
                 entity.AmbienceDesription = model.AmbienceDesription;
 
@@ -95,7 +93,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Ambiences
-                    .Single(e => e.AmbienceId == ambienceId && e.AdminId == _userId);
+                    .Single(e => e.AmbienceId == ambienceId);
 
                 ctx.Ambiences.Remove(entity);
                 return ctx.SaveChanges() == 1;
