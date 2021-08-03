@@ -37,7 +37,7 @@ namespace FengShui.Models
         [Display(Name = "Secondary Color")]
         public ColorEnum ?SecondaryColor { get; set; }
         [Display(Name = "Created")]
-        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? CreatedUtc { get; set; }
         [Display(Name = "Modified")]
         public DateTimeOffset? ModifiedUtc { get; set; }
     }

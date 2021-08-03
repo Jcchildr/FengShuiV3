@@ -5,15 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FengShui.Data
+namespace FengShui.Models
 {
-    public class Ambience
+    public class ProductAmbienceEdit
     {
-        [Key]
+        [Display(Name = "Product")]
+        public int ProductId { get; set; }
+        [Display(Name = "Ambience")]
         public int AmbienceId { get; set; }
-        [Required]
-        public string AmbienceName { get; set; }
-        [Required]
-        public string AmbienceDesription { get; set; }
     }
 }

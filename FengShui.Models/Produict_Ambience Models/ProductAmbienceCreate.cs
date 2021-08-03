@@ -10,8 +10,7 @@ namespace FengShui.Models
 {
     public class ProductAmbienceCreate
     {
-        [Display (Name = "Link ID" )]
-        public int ProductAmbienceLinkId { get; set; }
+       
         [Display(Name = "Product")]
         public int ProductId { get; set; }
         [Display(Name = "Ambience")]

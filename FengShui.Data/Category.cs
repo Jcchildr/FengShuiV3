@@ -12,8 +12,6 @@ namespace FengShui.Data
         [Key]
         public int CategoryId { get; set; }
         [Required]
-        public Guid AdminId { get; set; }
-        [Required]
         public string CategoryName { get; set; }
         [Required]
         public string CategoryDesc { get; set; }

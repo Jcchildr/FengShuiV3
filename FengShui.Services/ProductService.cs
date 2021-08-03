@@ -22,7 +22,6 @@ namespace FengShui.Services
             var entity =
                 new Product()
                 {
-                    AdminId = _userId,
                     ProductName = model.ProductName,
                     Price = model.Price,
                     Brandname = model.Brandname,
@@ -53,15 +52,14 @@ namespace FengShui.Services
                 var query =
                     ctx
                         .Products
-                        .Where(e => e.AdminId == _userId)
                         .Select(
-                        e =>
+                        p =>
                             new ProductList
                             {
-                                ProductId = e.ProductId,
-                                ProductName = e.ProductName,
-                                Price = e.Price,
-                                Brandname = e.Brandname,
+                                ProductId = p.ProductId,
+                                ProductName = p.ProductName,
+                                Price = p.Price,
+                                Brandname = p.Brandname,
                             }
                         );
                 return query.ToArray();
@@ -75,7 +73,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Products
-                    .Single(e => e.ProductId == id && e.AdminId == _userId);
+                    .Single(p => p.ProductId == id);
                 return
                     new ProductDetail
                     {
@@ -104,7 +102,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Products
-                    .Single(e => e.ProductId == id && e.AdminId == _userId);
+                    .Single(p => p.ProductId == id);
                 return
                     new ProductDetail
                     {
@@ -134,7 +132,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                         .Products
-                        .Single(e => e.ProductId == model.ProductId && e.AdminId == _userId);
+                        .Single(p => p.ProductId == model.ProductId);
                 entity.ProductName = model.ProductName;
                 entity.Price = model.Price;
                 entity.Brandname = model.Brandname;
@@ -160,22 +158,10 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Products
-                    .Single(e => e.ProductId == productId && e.AdminId == _userId);
+                    .Single(p => p.ProductId == productId);
 
                 ctx.Products.Remove(entity);
                 return ctx.SaveChanges() == 1;
-            }
-        }
-
-        public void AddAmbienceToProduct(int ambienceId, int productId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var foundAmbience = ctx.Ambiences.Single(a => a.AmbienceId == ambienceId);
-                var foundProduct = ctx.Products.Single(p => p.ProductId == productId);
-                foundProduct.ListOfAmbiences.Add(foundAmbience);
-                var testing = ctx.SaveChanges();
-
             }
         }
 
@@ -186,39 +172,5 @@ namespace FengShui.Services
                 return ctx.Products.ToList();
             }
         }
-
-        //public ProductAmbienceCreate
-
-        /* public string GetHomeLocationData()
-         {
-             using (var ctx = new ApplicationDbContext())
-             {
-                 var productList =
-                     ctx
-                     .Products
-                     .Where(e => e.AdminId == _userId);
-                 List<int> homeLocationValues = new List<int>();
-                 foreach (HomeLocationEnum homeLocation in (HomeLocationEnum[])Enum.GetValues(typeof(HomeLocationEnum)))
-                 {
-                     int homeLocationCount = 0;
-                     foreach (var p in productList)
-                     {
-                         if (p.HomeLocation == homeLocation)
-                             homeLocationCount++;
-                     }
-                     homeLocationValues.Add(homeLocationCount);
-                 }
-
-                 string result = "";
-
-                 foreach (var h in homeLocationValues)
-                 {
-                     result += h;
-                     result += ",";
-                 }
-                 return result;
-             }*/
-
-
     }
 }

@@ -190,6 +190,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductAmbienceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -256,7 +257,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Ambience\Index.cshtml" />
     <Content Include="Views\Ambience\Create.cshtml" />
-    <Content Include="Views\Ambience\Details.cshtml" />
     <Content Include="Views\Ambience\Edit.cshtml" />
     <Content Include="Views\Ambience\Delete.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
@@ -269,7 +269,10 @@
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
-    <Content Include="Views\Product\AddAmbienceToProduct.cshtml" />
+    <Content Include="Views\ProductAmbience\Index.cshtml" />
+    <Content Include="Views\ProductAmbience\PADetails.cshtml" />
+    <Content Include="Views\ProductAmbience\Create.cshtml" />
+    <Content Include="Views\Ambience\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,13 +7,13 @@ namespace FengShui.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class InitialMigration : IMigrationMetadata
+    public sealed partial class seed : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(seed));
         
         string IMigrationMetadata.Id
         {
-            get { return "202107251900042_Initial-Migration"; }
+            get { return "202107311917403_seed"; }
         }
         
         string IMigrationMetadata.Source

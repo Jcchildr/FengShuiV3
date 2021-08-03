@@ -4,39 +4,77 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>CategoryDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
+@section Styles
+{
+    <style type="text/css">
+        h2 {
+            font-variant: small-caps;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryId)
-        </dd>
+        h4 {
+            font-family: Georgia, serif;
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </dt>
+        body,html {
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background: #8AA1FF;
+            background: -moz-linear-gradient(top, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+            background: -webkit-linear-gradient(top, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+            background: linear-gradient(to bottom, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryName)
-        </dd>
+        #button {
+            transition-duration: 0.8s;
+            background-color: transparent;
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryDesc)
-        </dt>
+            #button:hover {
+                background-color: palegoldenrod;
+            }
+    </style>
+}
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryDesc)
-        </dd>
+<body>
+    <h2 class="text-center">
+        @Html.DisplayFor(model => model.CategoryName)
+        Details.
+    </h2>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.CategoryId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CategoryId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CategoryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryDesc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CategoryDesc)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>

@@ -4,48 +4,108 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Category Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-@if (TempData.ContainsKey("SaveResult"))
+@section Styles
 {
-    <div class="alert alert-success fade in" role="alert">
+    <style type="text/css">
+        h1 {
+            color: #333333;
+            background: #8AA1FF;
+            text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
+            color: #333333;
+            background: #8AA1FF;
+            font-variant: small-caps;
+        }
 
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
-    </div>
+        #tablesJumbotron {
+            background: #8AA1FF;
+        }
+
+        h4 {
+            font-family: Georgia, serif;
+            font-size: 24px;
+        }
+
+        p {
+            font-family: Georgia,serif;
+        }
+
+        html, body {
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background: #8AA1FF;
+            background: -moz-linear-gradient(top, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+            background: -webkit-linear-gradient(top, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+            background: linear-gradient(to bottom, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%)
+        }
+
+        button {
+            transition-duration: 0.8s;
+        }
+
+            button:hover {
+                background-color: transparent;
+            }
+
+        footer {
+        }
+    </style>
 }
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
+<body>
+
+    <div class="jumbotron" id="tablesJumbotron">
+        <div class="container" id="jumbotroncontainer">
+            <h1 id="HeaderText" class="text-center">Categories</h1>
+            <h4 class="text-center">Enter all Product Categories.</h4>
+            <p class="text-center">
+                @Html.ActionLink("Add a new Category", "Create")
+            </p>
+
+        </div>
+    </div>
+
+    @if (TempData.ContainsKey("SaveResult"))
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
-            </td>
-        </tr>
+        <div class="alert alert-success fade in" role="alert">
+
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+            @TempData["SaveResult"]
+        </div>
     }
 
-</table>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = item.CategoryId })</button>
+                        <button type="button" class="btn btn-default">@Html.ActionLink("Details", "Details", new { id = item.CategoryId })</button>
+                        <button type="button" class="btn btn-default">@Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })</button>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>

@@ -22,7 +22,6 @@ namespace FengShui.Services
             var entity =
                 new Ambience()
                 {
-                    AdminId = _userId,
                     AmbienceName = model.AmbienceName,
                     AmbienceDesription = model.AmbienceDesription,
                 };
@@ -41,7 +40,6 @@ namespace FengShui.Services
                 var query =
                     ctx
                         .Ambiences
-                        .Where(e => e.AdminId == _userId)
                         .Select(
                         e =>
                             new AmbienceList
@@ -61,14 +59,14 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Ambiences
-                    .Single(e => e.AmbienceId == id && e.AdminId == _userId);
+                    .Single(e => e.AmbienceId == id);
                 return
                     new AmbienceDetail
                     {
                         AmbienceId = entity.AmbienceId,
                         AmbienceName = entity.AmbienceName,
                         AmbienceDesription = entity.AmbienceDesription,
-                        ProductCount = entity.ListOfProducts.Count,
+                        
                     };
             }
         }
@@ -80,7 +78,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                         .Ambiences
-                        .Single(e => e.AmbienceId == model.AmbienceId && e.AdminId == _userId);
+                        .Single(e => e.AmbienceId == model.AmbienceId);
                 entity.AmbienceName = model.AmbienceName;
                 entity.AmbienceDesription = model.AmbienceDesription;
 
@@ -95,19 +93,19 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Ambiences
-                    .Single(e => e.AmbienceId == ambienceId && e.AdminId == _userId);
+                    .Single(e => e.AmbienceId == ambienceId);
 
                 ctx.Ambiences.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<ProductAmbienceDetail> GetAllProductsByAmbienceId(int ambienceId)
+       /* public IEnumerable<ProductAmbienceDetail> GetAllProductsByAmbienceId(int ambienceId)
         {
-            using (var ctx = new ApplicationDbContext())
+            using(var ctx = new ApplicationDbContext)
             {
                 var foundItems =
-               ctx.Ambiences.Single(e => e.AmbienceId == ambienceId).ListOfProducts
+               ctx.ProductAmbiences.Single(e => e.AmbienceId == ambienceId).ProductId
                .Select(e => new ProductAmbienceDetail
                {
                    ProductId = e.ProductId,
@@ -120,6 +118,6 @@ namespace FengShui.Services
                 return foundItems.ToArray();
             }
 
-        }
+        } */
     }
 }

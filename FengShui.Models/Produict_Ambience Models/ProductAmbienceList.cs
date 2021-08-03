@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace FengShui.Models
 {
-    public class AmbienceDetail
+    public class ProductAmbienceList
     {
+        [Display(Name = "Product ID")]
+        public int ProductId { get; set; }
+        [Display(Name = "Product Name")]
+        public string ProductName { get; set; }
         [Display(Name = "Ambience ID")]
         public int AmbienceId { get; set; }
-        [Display(Name = "Title")]
+        [Display(Name = "Ambience Name")]
         public string AmbienceName { get; set; }
-        [Display(Name = "Description")]
-        public string AmbienceDesription { get; set; }
     }
 }

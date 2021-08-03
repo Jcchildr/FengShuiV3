@@ -1,7 +1,59 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+@section Styles
+{
+    <style type="text/css">
+
+
+        h1 {
+            color: #333333;
+            background: #8AA1FF;
+            text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
+            color: #333333;
+            background: #8AA1FF;
+            font-variant: small-caps;
+        }
+
+        #tablesJumbotron {
+            background: #8AA1FF;
+        }
+
+        h4 {
+            font-family: Georgia, serif;
+            font-size: 24px;
+        }
+
+        p {
+            font-family: Georgia,serif;
+        }
+
+        body, html {
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background: #8AA1FF;
+            background: -moz-linear-gradient(top, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+            background: -webkit-linear-gradient(top, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+            background: linear-gradient(to bottom, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+        }
+    </style>
+}
+
+<div class="jumbotron" id="tablesJumbotron">
+    <div class="container" id="jumbotroncontainer">
+        <h1 id="HeaderText" class="text-center">Mission Statement</h1>
+
+    </div>
+</div>
+
+<p>
+    <br />
+
+    The Goal of my personal Red Badge MVC is to create a search system and store for people looking to add/create a specific feel within their own home.
+    This store will separate itself by focusing on allowing the user to search for decor by using specific adjectives such as modern, vintage, even wabi sabi.
+    Plus if an item pertains to multiple adjective categories you’ll be able to find that Item in all of the categories that apply.
+    Ever end up scrolling through lists upon lists of furniture items that you would never use? Feel like you waste time trying to
+    find the perfect art print to match a specific room? Look no further, this is the app for you.
+</p>

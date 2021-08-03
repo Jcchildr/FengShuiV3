@@ -16,13 +16,11 @@ namespace FengShui.Services
         {
             _userId = userId;
         }
-
         public bool CreateCategory(CategoryCreate model)
         {
             var entity =
                 new Category()
-                {
-                    AdminId = _userId,
+                { 
                     CategoryName = model.CategoryName,
                     CategoryDesc = model.CategoryDesc
                 };
@@ -41,7 +39,6 @@ namespace FengShui.Services
                 var query =
                     ctx
                         .Categories
-                        .Where(e => e.AdminId == _userId)
                         .Select(
                         e =>
                             new CategoryList
@@ -61,7 +58,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Categories
-                    .Single(e => e.CategoryId == id && e.AdminId == _userId);
+                    .Single(e => e.CategoryId == id);
                 return
                     new CategoryDetail
                     {
@@ -80,7 +77,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                         .Categories
-                        .Single(e => e.CategoryId == model.CategoryId && e.AdminId == _userId);
+                        .Single(e => e.CategoryId == model.CategoryId);
                 entity.CategoryName = model.CategoryName;
                 entity.CategoryDesc = model.CategoryDesc;
 
@@ -95,7 +92,7 @@ namespace FengShui.Services
                 var entity =
                     ctx
                     .Categories
-                    .Single(e => e.CategoryId == CategoryId && e.AdminId == _userId);
+                    .Single(e => e.CategoryId == CategoryId);
 
                 ctx.Categories.Remove(entity);
                 return ctx.SaveChanges() == 1;

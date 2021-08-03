@@ -30,14 +30,6 @@ namespace FengShuiV3.WebMVC.Controllers
             return View();
         }
 
-        
-
-        public ActionResult AddAmbiencetoProduct()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            ViewBag.AmbienceList = new AmbienceService(userId).GetAmbiences();
-            return View();
-        }
 
         //Post
         [HttpPost]
