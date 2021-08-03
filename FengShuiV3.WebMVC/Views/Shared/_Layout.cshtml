@@ -4,9 +4,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    @RenderSection("Styles", required: false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <style type="text/css">
+        #footer {
+            bottom: 100%;
+            width: 100%;
+            border-top: 2px outset black;
+            background-color: transparent;
+            color: black;
+            text-align: center;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            letter-spacing: 0.2px;
+            word-spacing: 2px;
+            color: #000000;
+            font-weight: 400;
+            text-decoration: none;
+            font-style: normal;
+            font-variant: normal;
+            text-transform: none;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" id="nav">
@@ -41,20 +61,22 @@
                         </ul>
                     </li>
                 </ul>
-                    @Html.Partial("_LoginPartial")
+                @Html.Partial("_LoginPartial")
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </div>
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            @Html.ActionLink("About", "About", "Home") | 
-            @Html.ActionLink("Contact", "Contact", "Home")
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        <br />
     </div>
+    <footer id="footer">
+        <br />
+        <br />
+        @Html.ActionLink("About", "About", "Home") |
+        @Html.ActionLink("Contact", "Contact", "Home")
+        <p>&copy; @DateTime.Now.Year - Jacob Childress</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

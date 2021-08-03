@@ -3,43 +3,79 @@
 @{
     ViewBag.Title = "Delete";
 }
+@section Styles
+{
+    <style type="text/css">
+        h2 {
+            font-variant: small-caps;
+        }
 
-<h2 class= "text-center">Are you sure you want to delete @Html.DisplayFor(model => model.CategoryName)?</h2>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
+        h4 {
+            font-family: Georgia, serif;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryId)
-        </dd>
+        body,html {
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background: #8AA1FF;
+            background: -moz-linear-gradient(top, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+            background: -webkit-linear-gradient(top, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+            background: linear-gradient(to bottom, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </dt>
+        #button {
+            transition-duration: 0.8s;
+            background-color: transparent;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryName)
-        </dd>
+            #button:hover {
+                background-color: palevioletred;
+            }
+    </style>
+}
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryDesc)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CategoryDesc)
-        </dd>
+<body>
 
-    </dl>
+    <h2 class="text-center">Are you sure you want to delete @Html.DisplayFor(model => model.CategoryName)?</h2>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            <dd>
+                @Html.DisplayFor(model => model.CategoryId)
+            </dd>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CategoryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryDesc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CategoryDesc)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input id="button" type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>

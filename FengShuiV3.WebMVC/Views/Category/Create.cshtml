@@ -4,45 +4,80 @@
     ViewBag.Title = "Create";
 }
 
-<h2 class= "text-center">Create a new Category</h2>
-
-
-@using (Html.BeginForm()) 
+@section Styles
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <p class= "text-center">A category is a division of items that have shared characteristics. Think Chairs and Sofas, Barware, or Art. </p>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <style type="text/css">
+        h2 {
+            font-variant: small-caps;
+        }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CategoryDesc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CategoryDesc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CategoryDesc, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        h4 {
+            font-family: Georgia, serif;
+        }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        body,html {
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background: #8AA1FF;
+            background: -moz-linear-gradient(top, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+            background: -webkit-linear-gradient(top, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+            background: linear-gradient(to bottom, #8AA1FF 0%, #8AA1FF 50%, #FFFFFF 100%);
+        }
+
+        #button {
+            transition-duration: 0.8s;
+            background-color: transparent;
+        }
+
+            #button:hover {
+                background-color: darkseagreen;
+            }
+    </style>
+}
+
+
+<body>
+
+    <h2 class="text-center">Create A New Category</h2>
+    <h4 class="text-center">A category is a division of items that have shared characteristics. Think Chairs and Sofas, Barware, or Art. </h4>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CategoryDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CategoryDesc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CategoryDesc, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input id="button" type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
