@@ -3,44 +3,81 @@
 @{
     ViewBag.Title = "Create";
 }
-
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
+@section Styles
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>ProductAmbienceCreate</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ProductId", new SelectList(ViewBag.ProductList, "ProductId", ("ProductName")))
-            </div>
-        </div>
+    <style type="text/css">
+        h2 {
+            font-variant: small-caps;
+        }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AmbienceId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("AmbienceId", new SelectList(ViewBag.AmbienceList, "AmbienceId", ("AmbienceName")))
-            </div>
-        </div>
+        h4 {
+            font-family: Georgia, serif;
+        }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        body, html {
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background: #E0968B;
+            background: -moz-linear-gradient(top, #E0968B 0%, #E0968B 50%, #FFFFFF 100%);
+            background: -webkit-linear-gradient(top, #E0968B 0%, #E0968B 50%, #FFFFFF 100%);
+            background: linear-gradient(to bottom, #E0968B 0%, #E0968B 50%, #FFFFFF 100%);
+        }
+
+        #button {
+            transition-duration: 0.8s;
+            background-color: transparent;
+        }
+
+            #button:hover {
+                background-color: darkseagreen;
+            }
+    </style>
+}
+
+
+<body>
+
+    <h2 class="text-center">Create A New Ambience & Product Relationship</h2>
+    <h4 class="text-center">
+        Assign Products to as many Ambience categories as applicable.
+    </h4>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>ProductAmbienceCreate</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ProductId", new SelectList(ViewBag.ProductList, "ProductId", ("ProductName")))
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AmbienceId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("AmbienceId", new SelectList(ViewBag.AmbienceList, "AmbienceId", ("AmbienceName")))
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input id="button" type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>

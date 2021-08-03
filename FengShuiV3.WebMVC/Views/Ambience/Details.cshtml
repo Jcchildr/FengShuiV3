@@ -4,47 +4,78 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Ambience Detailed View</h2>
 
-<div>
-    
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AmbienceId)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AmbienceId)
-        </dd>
+@section Styles
+{
+    <style type="text/css">
+        h2 {
+            font-variant: small-caps;
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AmbienceName)
-        </dt>
+        h4 {
+            font-family: Georgia, serif;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.AmbienceName)
-        </dd>
+        body, html {
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background: #AE9DE0;
+            background: -moz-linear-gradient(top, #AE9DE0 0%, #AE9DE0 50%, #FFFFFF 100%);
+            background: -webkit-linear-gradient(top, #AE9DE0 0%, #AE9DE0 50%, #FFFFFF 100%);
+            background: linear-gradient(to bottom, #AE9DE0 0%, #AE9DE0 50%, #FFFFFF 100%);
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AmbienceDesription)
-        </dt>
+        #button {
+            transition-duration: 0.8s;
+            background-color: transparent;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.AmbienceDesription)
-        </dd>
+            #button:hover {
+                background-color: palegoldenrod;
+            }
+    </style>
+}
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductCount)
-        </dt>
+<body>
+    <h2 class="text-center">
+        @Html.DisplayFor(model => model.AmbienceName)
+        Details.
+    </h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductCount)
-        </dd>
+    <div>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.AmbienceId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AmbienceId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AmbienceId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AmbienceName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AmbienceName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AmbienceDesription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AmbienceDesription)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.AmbienceId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>

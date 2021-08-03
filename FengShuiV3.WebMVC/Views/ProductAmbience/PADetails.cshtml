@@ -1,49 +1,104 @@
 ﻿@model IEnumerable<FengShui.Models.ProductAmbienceDetail>
-
 @{
     ViewBag.Title = "PADetails";
 }
 
-<h2>PADetails</h2>
+@section Styles
+{
+    <style type="text/css">
+        h1 {
+            color: #333333;
+            background: #E0968B;
+            text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
+            color: #333333;
+            background: #E0968B;
+            font-variant: small-caps;
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Brandname)
-        </th>
-        <th></th>
-    </tr>
+        #tablesJumbotron {
+            background: #E0968B;
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Brandname)
-        </td>
-        <td>
-            @Html.ActionLink("Back to List", "Index")
-        </td>
-    </tr>
+        h4 {
+            font-family: Georgia, serif;
+            font-size: 24px;
+        }
+
+        p {
+            font-family: Georgia,serif;
+        }
+
+        body, html {
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background: #E0968B;
+            background: -moz-linear-gradient(top, #E0968B 0%, #E0968B 50%, #FFFFFF 100%);
+            background: -webkit-linear-gradient(top, #E0968B 0%, #E0968B 50%, #FFFFFF 100%);
+            background: linear-gradient(to bottom, #E0968B 0%, #E0968B 50%, #FFFFFF 100%);
+        }
+
+        button {
+            transition-duration: 0.8s;
+        }
+
+            button:hover {
+                background-color: transparent;
+            }
+    </style>
 }
 
-</table>
+<body id="productindexbody">
+    <div class="jumbotron" id="tablesJumbotron">
+        <div class="container" id="jumbotroncontainer">
+            <h1 id="HeaderText" class="text-center">
+                Ambience Product List 
+            </h1>
+            <h4 class="text-center">List of Products linked to the selected Ambience </h4>
+            <p class="text-center">
+                @Html.ActionLink("Add More Products", "Create")
+            </p>
+
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brandname)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brandname)
+                </td>
+                <td>
+                    @Html.ActionLink("Back to List", "Index")
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>

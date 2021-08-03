@@ -15,7 +15,5 @@ namespace FengShui.Models
         public string AmbienceName { get; set; }
         [Display(Name = "Description")]
         public string AmbienceDesription { get; set; }
-        [Display(Name = "# of products associated")]
-        public int ProductCount { get; set; }
     }
 }

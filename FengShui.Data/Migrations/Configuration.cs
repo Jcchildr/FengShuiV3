@@ -36,20 +36,20 @@ namespace FengShui.Data.Migrations
                 );
 
             context.Categories.AddOrUpdate(
-                new Category { CategoryId = 1, CategoryName = "Chairs & Sofas", CategoryDesc = "Place Holder" },
-                new Category { CategoryId = 2, CategoryName = "Art & Decor", CategoryDesc = "Place Holder" },
-                new Category { CategoryId = 3, CategoryName = "Bedding", CategoryDesc = "Place Holder" },
-                new Category { CategoryId = 4, CategoryName = "Tables & Desks", CategoryDesc = "Place Holder" },
-                new Category { CategoryId = 5, CategoryName = "Lighting", CategoryDesc = "Place Holder" }
+                new Category { CategoryId = 1, CategoryName = "Chairs & Sofas", CategoryDesc = "Seats crafted with care and designed to accent the room with handsome looks." },
+                new Category { CategoryId = 2, CategoryName = "Art & Decor", CategoryDesc = "The wall art and prints you hang around your home have power. They tell a story about you." },
+                new Category { CategoryId = 3, CategoryName = "Bedding", CategoryDesc = "If you spend a good 33% in a bed, you might want to make it as comfotable as possible" },
+                new Category { CategoryId = 4, CategoryName = "Tables & Desks", CategoryDesc = "More than any other piece of furniture, tables and desks are what you make of them." },
+                new Category { CategoryId = 5, CategoryName = "Lighting", CategoryDesc = "The true mood setter of any room." }
 
                 );
 
             context.Ambiences.AddOrUpdate(
-                new Ambience { AmbienceId = 1, AmbienceName = "Lively", AmbienceDesription = "Place Holder" },
-                new Ambience { AmbienceId = 2, AmbienceName = "Moody", AmbienceDesription = "Place Holder" },
-                new Ambience { AmbienceId = 3, AmbienceName = "Log Cabin Vibes", AmbienceDesription = "Place Holder" },
-                new Ambience { AmbienceId = 4, AmbienceName = "Wabi-Sabi", AmbienceDesription = "Place Holder" },
-                new Ambience { AmbienceId = 5, AmbienceName = "Cozy", AmbienceDesription = "Place Holder" }
+                new Ambience { AmbienceId = 1, AmbienceName = "Lively", AmbienceDesription = "The bright and airy interior design style features lots of white, and other light colours, cosy fabrics, pale timber, and friendly ‘feels’." },
+                new Ambience { AmbienceId = 2, AmbienceName = "Moody", AmbienceDesription = "Darker colours, grey, black, or bold touches of colour mix with more industrial and luxury elements create the moody feel." },
+                new Ambience { AmbienceId = 3, AmbienceName = "Log Cabin Vibes", AmbienceDesription = "The feel of a warm fire and smell of pine seems to go well with this atmosphere." },
+                new Ambience { AmbienceId = 4, AmbienceName = "Wabi-Sabi", AmbienceDesription = "Embrace the imperfect and the fleeting." },
+                new Ambience { AmbienceId = 5, AmbienceName = "Cozy", AmbienceDesription = "Giving a feeling of comfort, warmth, and relaxation." }
                 );
 
             context.ProductAmbiences.AddOrUpdate(

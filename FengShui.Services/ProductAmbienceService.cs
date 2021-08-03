@@ -52,7 +52,7 @@ namespace FengShui.Services
             }
         }
 
-        public IEnumerable<ProductAmbienceDetail> GetAllProductsByAmbienceId(int ambienceId)
+        public IEnumerable<ProductAmbienceDetail> GetAllProductsByAmbienceId( int ambienceId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -64,13 +64,26 @@ namespace FengShui.Services
                         ProductId = pa.Product.ProductId,
                         ProductName = pa.Product.ProductName,
                         Price = pa.Product.Price,
-                        Brandname = pa.Product.Brandname
+                        Brandname = pa.Product.Brandname,
 
                     }
                );
                 return query.ToArray();
+            } 
+        }
+
+        public bool DeleteThePALink(int ambienceId, int productId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .ProductAmbiences
+                    .Where(pa => pa.AmbienceId == ambienceId && pa.ProductId == productId);
+
+                ctx.ProductAmbiences.Remove((ProductAmbience)entity);
+                return ctx.SaveChanges() == 1;
             }
-            
         }
 
 

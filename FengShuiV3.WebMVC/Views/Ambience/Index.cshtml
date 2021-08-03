@@ -4,48 +4,106 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Ambience Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-@if (TempData.ContainsKey("SaveResult"))
+@section Styles
 {
-    <div class="alert alert-success fade in" role="alert">
+    <style type="text/css">
+        h1 {
+            color: #333333;
+            background: #AE9DE0;
+            text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
+            color: #333333;
+            background: #AE9DE0;
+            font-variant: small-caps;
+        }
 
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
-    </div>
+        #tablesJumbotron {
+            background: #AE9DE0;
+        }
+
+        h4 {
+            font-family: Georgia, serif;
+            font-size: 24px;
+        }
+
+        p {
+            font-family: Georgia,serif;
+        }
+
+        html, body {
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background: #AE9DE0;
+            background: -moz-linear-gradient(top, #AE9DE0 0%, #AE9DE0 50%, #FFFFFF 100%);
+            background: -webkit-linear-gradient(top, #AE9DE0 0%, #AE9DE0 50%, #FFFFFF 100%);
+            background: linear-gradient(to bottom, #AE9DE0 0%, #AE9DE0 50%, #FFFFFF 100%);
+        }
+
+        button {
+            transition-duration: 0.8s;
+        }
+
+            button:hover {
+                background-color: transparent;
+            }
+
+        footer {
+        }
+    </style>
 }
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AmbienceId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AmbienceName)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
+<body>
+
+    <div class="jumbotron" id="tablesJumbotron">
+        <div class="container" id="jumbotroncontainer">
+            <h1 id="HeaderText" class="text-center">Ambience</h1>
+            <h4 class="text-center">Enter all Ambience/Atmosphere here.</h4>
+            <p class="text-center">
+                @Html.ActionLink("Add A New Ambience", "Create")
+            </p>
+
+        </div>
+    </div>
+
+    @if (TempData.ContainsKey("SaveResult"))
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AmbienceId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AmbienceName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.AmbienceId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.AmbienceId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.AmbienceId })
-            </td>
-        </tr>
-    }
+        <div class="alert alert-success fade in" role="alert">
 
-</table>
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+            @TempData["SaveResult"]
+        </div>
+    }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AmbienceId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmbienceName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmbienceId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmbienceName)
+                </td>
+                <td>
+                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = item.AmbienceId })</button>
+                        <button type="button" class="btn btn-default">@Html.ActionLink("Details", "Details", new { id = item.AmbienceId })</button>
+                        <button type="button" class="btn btn-default">@Html.ActionLink("Delete", "Delete", new { id = item.AmbienceId })</button>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>

@@ -45,7 +45,7 @@ namespace FengShuiV3.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult GetAlGetAllProductsByAmbienceId(int id)
+        public ActionResult Details(int id)
         {
             var svc = CreateAmbienceService();
             var model = svc.GetAmbienceById(id);

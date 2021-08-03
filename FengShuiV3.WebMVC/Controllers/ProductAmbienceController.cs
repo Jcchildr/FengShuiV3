@@ -48,12 +48,36 @@ namespace FengShuiV3.WebMVC.Controllers
 
         public ActionResult PADetails(int id)
         {
-
             var svc = CreateProductAmbienceService();
             var model = svc.GetAllProductsByAmbienceId(id);
 
             return View(model);
         }
+
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int aId,int pId)
+        {
+            var svc = CreateProductAmbienceService();
+            var model = svc.DeleteThePALink(aId, pId);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int aId, int pId)
+        {
+            var service = CreateProductAmbienceService();
+
+            service.DeleteThePALink(aId, pId);
+
+            TempData["SaveResult"] = "The link was deleted.";
+
+            return RedirectToAction("Index");
+        }
+
         /*
                 public ActionResult Edit(int id)
                 {
